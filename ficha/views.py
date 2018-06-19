@@ -15,8 +15,8 @@ def ficha(request):
 
 
 def abrir_ficha(request, id):
-    person = get_object_or_404(Ficha, pk=id)
-    form = Fichaform(request.POST or None, instance=person)
+    paciente = get_object_or_404(Ficha, pk=id)
+    form = Fichaform(request.POST or None, instance=paciente)
     if form.is_valid():
         form.save()
         return redirect('lista')
@@ -32,5 +32,7 @@ def apagar_ficha(request, id):
 
     return render(request, 'apagar_ficha.html', {'paciente': paciente})
 
-def ficha_completa(request):
-    return render(request, 'ficha_completa.html')
+def termo(request, id):
+    paciente = get_object_or_404(Ficha, pk=id)
+    form = Fichaform(request.POST or None, instance=paciente)
+    return render (request, 'termo.html', {'form': form})

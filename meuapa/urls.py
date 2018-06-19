@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import home, lista
-from ficha.views import ficha, abrir_ficha, apagar_ficha, ficha_completa
+from ficha.views import ficha, abrir_ficha, apagar_ficha, termo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +25,5 @@ urlpatterns = [
     path('ficha/', ficha, name='ficha'),
     path('ler_ficha/<int:id>', abrir_ficha, name='ler_ficha'),
     path('apagar_ficha/<int:id>', apagar_ficha, name='apagar_ficha'),
-    path('ficha_completa', ficha_completa, name='ficha_completa'),
+    path('termo/<int:id>', termo, name='termo'),
 ]
