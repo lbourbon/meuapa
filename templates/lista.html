@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 {% block title %} Lista de Pacientes {% endblock %}
 {% block main%}
-<h1>PACIENTES:</h1>
+<h2>LISTA DE PACIENTES:</h2>
 <ul>
 	{% for paciente in pacientes %}
 	<li><a href="{% url 'ler_ficha' paciente.id%}">{{ paciente }}</a>
