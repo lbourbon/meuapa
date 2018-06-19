@@ -1,0 +1,303 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<title>Ficha de Avaliação Pré-Anestésica</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Lécio dos Anjos Bourbon Filho">
+	<meta name="keywords" content="anestesia, avaliação pré-anestésica, ficha, anestesiologia">
+	<meta name="description" content="Rascunho do projeto de uma ficha de avaliação pré-Anestésica">
+	<meta name="application-name" content="Avaliação Pré-Anestésica">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'ficha.css' %}" media="screen">
+	<link rel="stylesheet" href="{% static 'imprimir_ficha.css' %}" media="print">
+	<!-- FONTES: -->
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+</head>
+
+<body>
+<form action="{% url 'ficha' %}" method="post">
+		{% csrf_token %}
+	<div class="container">
+		<div id="titulo">
+			<h1 align="center">AVALIAÇÃO PRÉ-ANESTÉSICA</h1>
+		</div>
+	<section id="date-field" class="grid-item">
+			<fieldset><label>Data: </label><input id="data" name="data" type="date" value=""></fieldset>
+		</section>
+		<section id="ident" class="grid-item">
+			<fieldset>
+				<legend>IDENTIFICAÇÃO</legend>
+				<label>Nome: </label><input autofocus required name="nome" id="nome" type="text"
+				                            placeholder="Nome Completo"
+				                            maxlength="100">
+				<label>D.N.:<input name="dn" id="nasc" type="date"> </label>
+				<label>Sexo:<input name="sexo" type="radio" value="1"> <label>M</label>
+							<input name="sexo" type="radio" value="2"><label>F</label></label>
+				<label>CPF:<input id="cpf" name="cpf" type="text" maxlength="14"></label>
+				<label>Hospital:<input id="hosp" name="hosp" type="text" maxlength="25"></label>
+				<label>Convênio:<input id="convenio" name="convenio" type="text" maxlength="25"></label>
+				<label>Cirugia:<input id="cirurgia" name="cirurgia" type="text" maxlength="100"></label>
+				<label>Cirugião:<input id="cirurgiao" name="cirurgiao" type="text" maxlength="60"></label>
+			</fieldset>
+		</section>
+		<section id="antrop" class="grid-item">
+			<fieldset class="circular-label  input-pequeno">
+				<legend>DADOS ANTROPOMÉTRICOS</legend>
+				<label>Peso: </label><input id="peso" name="peso" type="number">(kg)<br>
+				<label>Altura: </label><input id="altura" name="altura" type="number">(cm)<br>
+				<label>IMC:</label><input id="imc" name="imc" type="number">(kg/m²)
+			</fieldset>
+		</section>
+
+		<section id="previas" class="grid-item">
+			<fieldset>
+				<legend>CIRURGIAS / ANESTESIAS PRÉVIAS</legend>
+				<input name="previa" type="checkbox"><label>Nenhuma</label><br>
+				<input name="previa" type="text" placeholder="Cirurgia" maxlength="100">
+				<input name="previa" type="text" placeholder="Anestesia" maxlength="100"><br>
+			</fieldset>
+		</section>
+		<section id="adversos" class="grid-item">
+			<fieldset>
+				<legend>EVENTOS ADVERSOS</legend>
+				<input name="eventos_adversos" type="checkbox"><label>Nenhum</label><br>
+				<input name="eventos_adversos" type="text"
+				       placeholder="Eventos Adversos em anestesias prévias"
+				       maxlength="100"><label> </label><br>
+			</fieldset>
+		</section>
+		<section id="av-clinica" class="grid-item">
+			<fieldset>
+				<legend>AVALIAÇÃO CLÍNICA</legend>
+				<div class="container-clinica">
+					<fieldset class="clinica" id="cap-funcional">
+						<legend>Capacidade Funcional</legend>
+						<input name="mets" type="radio" placeholder=""><label> > 4 METs</label><br>
+						<input name="mets" type="radio" placeholder=""><label> < 4 METs</label><br>
+						<input name="mets" type="radio" placeholder=""><label> Impossível avaliar</label><br>
+					</fieldset>
+
+					<fieldset class="clinica" id="cardio">
+						<legend>Cardio Circulatório</legend>
+						<input name="cardio" type="checkbox"><label>Negativo </label><br>
+						<input name="cardio" type="checkbox"><label>Hipertensão </label><br>
+						<input name="cardio" type="checkbox"><label>Arritmia </label><br>
+						<input name="cardio" type="checkbox"><label>Coronariopatia </label><br>
+						<input name="cardio" type="checkbox"><label>Insuficiência Cardíaca </label><br>
+						<input name="cardio" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="neuro">
+						<legend>Neurológico</legend>
+						<input name="neuro" type="checkbox"><label>Negativo</label><br>
+						<input name="neuro" type="checkbox"><label>AVC prévio</label><br>
+						<input name="neuro" type="checkbox"><label>Cefaléia</label><br>
+						<input name="neuro" type="checkbox"><label>Convulsão</label><br>
+						<input name="neuro" type="checkbox"><label>Lesão medular</label><br>
+						<input name="neuro" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="resp">
+						<legend>Respiratório</legend>
+						<input name="resp" type="checkbox"><label>Negativo</label><br>
+						<input name="resp" type="checkbox"><label>Asma</label><br>
+						<input name="resp" type="checkbox"><label>DPOC</label><br>
+						<input name="resp" type="checkbox"><label>Tabagismo</label><br>
+						<input name="resp" type="checkbox"><label>IVAS Recente</label><br>
+						<input name="resp" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="gastro">
+						<legend>Gastrointestinal</legend>
+						<input name="gastro" type="checkbox"><label>Negativo</label><br>
+						<input name="gastro" type="checkbox"><label>Reflugo Gastro-esofágico</label><br>
+						<input name="gastro" type="checkbox"><label>Gastrite</label><br>
+						<input name="gastro" type="checkbox"><label>Vômito/Diarréia</label><br>
+						<input name="gastro" type="checkbox"><label>Obstrução Intestinal</label><br>
+						<input name="gastro" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="endocrino">
+						<legend>Endócrino-metabólico</legend>
+						<input name="endocrino" type="checkbox"><label>Negativo</label><br>
+						<input name="endocrino" type="checkbox"><label>Diabetes</label><br>
+						<input name="endocrino" type="checkbox"><label>Disfunção Tireoideana</label><br>
+						<input name="endocrino" type="checkbox"><label>Dislipidemia</label><br>
+						<input name="endocrino" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="renal">
+						<legend>Renal</legend>
+						<input name="renal" type="checkbox"><label> Negativo</label><br>
+						<input name="renal" type="checkbox"><label>Insuficiência Renal Crônica</label><br>
+						<input name="renal" type="checkbox"><label>Insuficiência Renal Aguda </label><br>
+						<input name="renal" type="checkbox"><label>Diálise </label><br>
+						<input name="renal" type="checkbox"><label>Outras </label><br>
+					</fieldset>
+					<fieldset class="clinica" id="hem">
+						<legend>Hematológico-Infeccioso</legend>
+						<input name="hem" type="checkbox"><label>Negativo</label><br>
+						<input name="hem" type="checkbox"><label>Coagulopatia</label><br>
+						<input name="hem" type="checkbox"><label>Anemia</label><br>
+						<input name="hem" type="checkbox"><label>Transfusão Prévia</label><br>
+						<input name="hem" type="checkbox"><label>Hepatite</label><br>
+						<input name="hem" type="checkbox"><label>HIV </label><br>
+						<input name="hem" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+					<fieldset class="clinica" id="musc">
+						<legend>Músculo-Esquelético</legend>
+						<input name="musc" type="checkbox"><label>Negativo</label><br>
+						<input name="musc" type="checkbox"><label>Lombalgia</label><br>
+						<input name="musc" type="checkbox"><label>Desvio da coluna</label><br>
+						<input name="musc" type="checkbox"><label>Artrite</label><br>
+						<input name="musc" type="checkbox"><label>Artrose</label><br>
+						<input name="musc" type="checkbox"><label>Distrofia Muscular</label><br>
+						<input name="musc" type="checkbox"><label>Outras</label><br>
+					</fieldset>
+				</div>
+			</fieldset>
+		</section>
+		<section id="medicacoes" class="grid-item">
+			<fieldset>
+				<legend>MEDICAÇÕES EM USO</legend>
+				<textarea maxlength="100" name="medicacoes" placeholder="Medicações de uso contínuo..."></textarea>
+			</fieldset>
+		</section>
+		<section id="alergias" class="grid-item">
+			<fieldset id="alerg">
+				<legend>ALERGIAS</legend>
+				<input name="alergias" type="text" placeholder="Alergias conhecidas a medicações ou alimentos...">
+			</fieldset>
+		</section>
+		<section id="fisico" class="grid-item">
+			<fieldset class="circular-label">
+				<legend>EXAME FÍSICO</legend>
+				<label>Geral:</label><input type="text" id="geral" name="geral"><br>
+				<label>ACV:</label> <input type="text" id="acv" name="acv"><br>
+				<label>AR:</label> <input type="text" id="ar" name="ar"><br>
+				<label>Abd:</label> <input type="text" id="abd" name="abd"><br>
+				<label>Ext:</label> <input type="text" id="ext" name="ext"><br>
+			</fieldset>
+		</section>
+		<section id="sinais-vitais" class="grid-item">
+			<fieldset class="circular-label  input-pequeno">
+				<legend>SINAIS VITAIS</legend>
+				<label>P.A.=</label> <input type="number" id="pas" name="pas"> x <input type="number" id="pad" name="pad"><br>
+				<label>F.C.=</label> <input type="number" id="fc" name="fc"><br>
+				<label>F.R.=</label> <input type="number" id="fr" name="fr"><br>
+				<label>T º =</label> <input type="number" id="temp" name="temp">
+			</fieldset>
+		</section>
+		<section id="va" class="grid-item">
+			<fieldset>
+				<legend>VIAS AÉREAS</legend>
+				<div class="container-va">
+					<fieldset class="vias-aereas">
+						<legend>Mallampati</legend>
+						<input name="mal" type="radio"> <label>I</label>
+						<input name="mal" type="radio"> <label>II</label>
+						<input name="mal" type="radio"> <label>III</label>
+						<input name="mal" type="radio"> <label>IV</label>
+					</fieldset>
+
+					<fieldset class="vias-aereas">
+						<legend>Distância Esterno-Mento</legend>
+						<input name="dist-em" type="radio"> <label>> 12cm</label>
+						<input name="dist-em" type="radio"> <label>< 12cm</label>
+					</fieldset>
+
+					<fieldset class="vias-aereas">
+						<legend>Mobilidade Cervical</legend>
+						<input name="mob-cer" type="radio"> <label>Boa</label>
+						<input name="mob-cer" type="radio"> <label>Limitada</label>
+					</fieldset>
+
+					<fieldset class="vias-aereas">
+						<legend>Abertura Oral</legend>
+						<input name="ab-oral" type="radio">> 4cm <label></label>
+						<input name="ab-oral" type="radio">< 4cm <label></label>
+					</fieldset>
+
+					<fieldset class="vias-aereas">
+						<legend>Prótese Dentária</legend>
+						<input name="protese" type="radio">Não <label></label>
+						<input name="protese" type="radio">Sim <label></label>
+					</fieldset>
+
+					<fieldset class="vias-aereas" id="vad">
+						<legend>Via Aérea Difícil</legend>
+						<input name="vad" type="radio">Não <label></label>
+						<input name="vad" type="radio">Sim <label></label>
+					</fieldset>
+				</div>
+			</fieldset>
+		</section>
+		<section id="lab" class="grid-item">
+			<fieldset class="circular-label input-pequeno">
+				<legend>EXAMES LABORATORIAIS</legend>
+				<div class="container-lab">
+					<label>Hb<input class="lab" type="number" id="hb"></label>
+					<label>Ht<input class="lab" type="number" id="ht"></label>
+					<label>Leuco<input class="lab" type="number" id="leuco"></label>
+					<label>Plaq<input class="lab" type="number" id="plt"></label>
+					<label>Glicemia<input class="lab" type="number" id="gli"></label>
+					<label>Uréia<input class="lab" type="number" id="u"></label>
+					<label>Cr<input class="lab" type="number" id="cr"></label>
+					<label>Na<input class="lab" type="number" id="na"></label>
+					<label>K<input class="lab" type="number" id="k"></label>
+					<label>TS<input class="lab" type="number" id="ts"></label>
+					<label>TC<input class="lab" type="number" id="tc"></label>
+					<label>INR<input class="lab" type="number" id="inr"></label>
+					<label>TP<input class="lab" type="number" id="tp"></label>
+					<label>TTPA<input class="lab" type="number" id="ttpa"></label>
+					<!--<label><input type="number" id=""></label>-->
+				</div>
+			</fieldset>
+		</section>
+		<section id="exames" class="grid-item">
+			<fieldset class="circular-label">
+				<legend>EXAMES COMPLEMENTARES</legend>
+				<label>ECG</label><input type="text" id="ecg"><br>
+				<label>ECO</label><input type="text" id="eco"><br>
+				<label>Radiografia</label><input type="text" id="rx"><br>
+				<label>T. Ergométrico</label><input type="text" id="ergo"><br>
+				<label>Outros</label><input type="text" id="outros-ex"><br>
+			</fieldset>
+		</section>
+		<section id="anotacoes" class="grid-item">
+			<fieldset>
+				<legend>ANOTAÇÕES</legend>
+				<textarea maxlength="100" placeholder="Observações importantes..."></textarea>
+			</fieldset>
+		</section>
+		<section id="proposta" class="grid-item">
+			<fieldset>
+				<label>Anestesia Proposta:</label><input type="text">
+				<label>Jejum Pré-operatório:</label><input type="text">
+			</fieldset>
+		</section>
+		<section id="prescricao" class="grid-item">
+			<fieldset id="lista-prescricao">
+				<legend>PRESCRIÇÃO PRÉ-ANESTÉSICA</legend>
+				<label>1.</label><input type="text"><br>
+				<label>2.</label><input type="text"><br>
+				<label>3.</label><input type="text"><br>
+			</fieldset>
+		</section>
+		<section id="carimbo" class="grid-item">
+			CARIMBO E ASSINATURA
+		</section>
+		<section id="asa" class="grid-item">
+			<fieldset>
+				ASA:
+				<input name="asa" type="number" min="1" max="5">
+			</fieldset>
+		</section>
+		<section id="botoes" class="grid-item">
+			<fieldset>
+				<input class="btn-save" name="fim" type="submit" value="SALVAR">
+				<input class="btn-save" name="fim" type="submit" value="SALVAR  E IMPRIMIR">
+				<label><input name="fim" type="checkbox" checked>IMPRIMIR TERMO DE CONSENTIMENTO</label>
+			</fieldset>
+		</section>
+	</div>
+</form>
+<script src="{% static 'ficha.js' %}"></script>
+</body>
+</html>
