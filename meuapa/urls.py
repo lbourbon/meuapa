@@ -20,7 +20,7 @@ from ficha.views import ficha, abrir_ficha, apagar_ficha, termo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lista, name='lista'),
+    path('', home, name='home'),
     path('lista/', lista, name='lista'),
     path('ficha/', ficha, name='ficha'),
     path('ler_ficha/<int:id>', abrir_ficha, name='ler_ficha'),
