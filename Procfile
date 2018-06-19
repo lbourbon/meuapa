@@ -1,0 +1,1 @@
+web: gunicorn meuapa.wsgi --log-file -
