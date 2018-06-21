@@ -1,0 +1,32 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="{% static 'login.css' %}">
+	<title>APA</title>
+</head>
+<body>
+<div id="container_home">
+	<header>
+		<div id="logo">A.P.A.</div>
+		<div id="titulo_home"><h1>AVALIAÇÃO PRÉ-ANESTÉSICA</h1></div>
+		<div id="alpha">*<i>versão alpha &nbsp</i></div>
+	</header>
+	<div id="login_form">
+		<form method="post">
+			{% csrf_token %}
+			<div class="login_comps"> {{ form.as_p }}</div>
+			<div class="login_comps"> <button type="submit">LOGIN</button></div>
+
+		</form>
+	</div>
+	<footer>
+		<p>Desenvolvido por Lécio Bourbon Filho</p>
+	</footer>
+</div>
+</body>
+</html>

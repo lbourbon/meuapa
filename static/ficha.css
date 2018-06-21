@@ -118,8 +118,9 @@ justify-self: center;
 #exames label{min-width: 8em;}
 #exames input{width: 72%; font-size:1.4em;}
 #proposta input{
-width: 25%;
-text-align: center;}
+    width: 25%;
+    text-align: center;
+}
 #medicacoes {
     width: 100%;
 }

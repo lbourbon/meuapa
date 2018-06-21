@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from home.views import home, lista
 from ficha.views import ficha, abrir_ficha, apagar_ficha, termo
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('', lista, name='lista'),
     path('lista/', lista, name='lista'),
     path('ficha/', ficha, name='ficha'),
     path('ler_ficha/<int:id>', abrir_ficha, name='ler_ficha'),
     path('apagar_ficha/<int:id>', apagar_ficha, name='apagar_ficha'),
     path('termo/<int:id>', termo, name='termo'),
+    path('login/', auth_views.login, name='login'),
+    path('logout/', auth_views.logout, name='logout'),
+
 ]
