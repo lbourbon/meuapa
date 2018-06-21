@@ -1,6 +1,8 @@
 {% extends 'base.html'%}
 {% block title %} Lista de Pacientes {% endblock %}
 {% block main%}
+<a href="{% url 'logout' %}"><img src="https://cdn1.iconfinder.com/data/icons/door-3/200/1333_door-512.png"
+				height="30" width="30"> </a>
 <h2>LISTA DE PACIENTES:</h2>
 <ul>
 	{% for paciente in pacientes %}
@@ -15,7 +17,6 @@
 	{% endfor %}
 </ul>
 
-<a href="{% url 'ficha' %}">
-	<button>NOVA</button>
-</a>
+<a href="{% url 'ficha' %}"><img src="https://cdn2.iconfinder.com/data/icons/designers-and-developers-icon-set/32/add_file-512.png"
+height="40" width="40"> </a>
 {% endblock %}
