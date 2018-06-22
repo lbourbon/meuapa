@@ -9,6 +9,8 @@ from forms import Fichaform
 def ficha(request):
     form = Fichaform(request.POST or None)
     if form.is_valid():
+        form = form.save(commit=False)
+        form.user = request.user  # adiciona o autor da ficha antes de salvar
         form.save()
         return redirect('lista')
 
@@ -19,6 +21,8 @@ def abrir_ficha(request, id):
     paciente = get_object_or_404(Ficha, pk=id)
     form = Fichaform(request.POST or None, instance=paciente)
     if form.is_valid():
+        form = form.save(commit=False)
+        form.user = request.user  # adiciona o autor da ficha antes de salvar
         form.save()
         return redirect('lista')
 

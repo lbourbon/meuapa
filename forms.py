@@ -19,3 +19,4 @@ class Fichaform(ModelForm):
             'outroex', 'anotacoes', 'anotacoes2', 'proposta', 'jejum', 'prescricao', 'prescricao2', 'prescricao3', 'asa',
         ]
 
+        exclude = ('user',)

@@ -1,9 +1,11 @@
 from django.db import models
 from .choices import *
+from django.contrib.auth.models import User
 #import forms
 # Create your models here.
 
 class Ficha(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     data = models.DateField(null=True, blank=True)
     nome = models.CharField(max_length=100, blank=True)
     dn = models.DateField(null=True, blank=True)
