@@ -10,4 +10,4 @@ def home(request):
 @login_required
 def lista(request):
     pacientes = Ficha.objects.filter(user=request.user)
-    return render(request, 'lista.html', {'pacientes': pacientes)
+    return render(request, 'lista.html', {'pacientes': pacientes})
