@@ -118,3 +118,5 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'lista'
 
 LOGOUT_REDIRECT_URL = 'lista'
+
+DECIMAL_SEPARATOR = ','
