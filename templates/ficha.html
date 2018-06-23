@@ -50,13 +50,13 @@
 			</fieldset>
 		</section>
 		<section id="antrop" class="grid-item">
-			<fieldset class="circular-label  input-pequeno">
+						<fieldset class="circular-label  input-pequeno">
 				<legend>DADOS ANTROPOMÉTRICOS</legend>
-				<label>Peso: </label><input id="peso" name="peso" type="text"
+				<label>Peso: </label><input id="peso" name="peso" type="number" step="0.1"
 			{% if form.peso.value != None %}value="{{ form.peso.value|stringformat:'s' }}"{% endif %}>(kg)<br>
-				<label>Altura: </label><input id="altura" name="altura" type="text"
+				<label>Altura: </label><input id="altura" name="altura" type="number" step="0.1"
 			{% if form.altura.value != None %}value="{{ form.altura.value|stringformat:'s' }}"{% endif %}>(cm)<br>
-				<label>IMC:</label><input id="imc" name="imc" type="text"
+				<label>IMC:</label><input id="imc" name="imc" type="number" step="0.01"
 			{% if form.imc.value != None %}value="{{ form.imc.value|stringformat:'s' }}"{% endif %}>(kg/m²)
 			</fieldset>
 		</section>
@@ -322,33 +322,33 @@
 			<fieldset class="circular-label input-pequeno">
 				<legend>EXAMES LABORATORIAIS</legend>
 				<div class="container-lab">
-					<label>Hb<input class="lab" type="text" id="hb" name="hb"
+					<label>Hb<input class="lab" type="number" step="0.1" id="hb" name="hb"
 					{% if form.hb.value != None %}value="{{ form.hb.value|stringformat:'s' }}"{% endif %}></label>
-					<label>Ht<input class="lab" type="text" id="ht" name="ht"
+					<label>Ht<input class="lab" type="number" step="0.1" id="ht" name="ht"
 					{% if form.ht.value != None %}value="{{ form.ht.value|stringformat:'s' }}"{% endif %}></label>
-					<label>Leuco<input class="lab" type="text" id="leuco" name="leuco"
+					<label>Leuco<input class="lab" type="number" id="leuco" name="leuco"
 					{% if form.leuco.value != None %}value="{{ form.leuco.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Plaq<input class="lab" type="text" id="plt" name="plt"
+					<label>Plaq<input class="lab" type="number" id="plt" name="plt"
 					{% if form.plt.value != None %}value="{{ form.plt.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Glicemia<input class="lab" type="text" id="gli" name="gli"
+					<label>Glicemia<input class="lab" type="number" step="0.1" id="gli" name="gli"
 					{% if form.gli.value != None %}value="{{ form.gli.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Uréia<input class="lab" type="text" id="u" name="u"
+					<label>Uréia<input class="lab" type="number" step="any" id="u" name="u"
 					{% if form.u.value != None %}value="{{ form.u.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Cr<input class="lab" type="text" id="cr" name="cr"
+					<label>Cr<input class="lab" type="number" step="any" id="cr" name="cr"
 					{% if form.cr.value != None %}value="{{ form.cr.value|stringformat:'s'}}"{% endif %}></label>
-					<label>Na<input class="lab" type="text" id="na" name="na"
+					<label>Na<input class="lab" type="number" step="any" id="na" name="na"
 					{% if form.na.value != None %}value="{{ form.na.value|stringformat:'s'}}"{% endif %}></label>
-					<label>K<input class="lab" type="text" id="k" name="k"
+					<label>K<input class="lab" type="number" step="any" id="k" name="k"
 					{% if form.k.value != None %}value="{{ form.k.value|stringformat:'s'}}"{% endif %}></label>
-					<label>TS<input class="lab" type="text" id="ts" name="ts"
+					<label>TS<input class="lab" type="number" step="any" id="ts" name="ts"
 					{% if form.ts.value != None %}value="{{ form.ts.value|stringformat:'s'}}"{% endif %}></label>
-					<label>TC<input class="lab" type="text" id="tc" name="tc"
+					<label>TC<input class="lab" type="number" step="any" id="tc" name="tc"
 					{% if form.tc.value != None %}value="{{ form.tc.value|stringformat:'s'}}"{% endif %}></label>
-					<label>INR<input class="lab" type="text" id="inr" name="inr"
+					<label>INR<input class="lab" type="number" step="any" id="inr" name="inr"
 					{% if form.inr.value != None %}value="{{ form.inr.value|stringformat:'s'}}"{% endif %}></label>
-					<label>TP<input class="lab" type="text" id="tp" name="tp"
+					<label>TP<input class="lab" type="number" step="any" id="tp" name="tp"
 					{% if form.tp.value != None %}value="{{ form.tp.value|stringformat:'s'}}"{% endif %}></label>
-					<label>TTPA<input class="lab" type="text" id="ttpa" name="ttpa"
+					<label>TTPA<input class="lab" type="number" step="any" id="ttpa" name="ttpa"
 					{% if form.ttpa.value != None %}value="{{ form.ttpa.value|stringformat:'s'}}"{% endif %}></label>
 					<!--<label><input type="number" id=""></label>-->
 				</div>
